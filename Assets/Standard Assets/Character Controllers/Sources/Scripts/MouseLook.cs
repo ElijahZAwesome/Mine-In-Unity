@@ -28,10 +28,13 @@ public class MouseLook : MonoBehaviour {
 	public float minimumY = -90F;
 	public float maximumY = 90F;
 
+	public GameObject PauseMenu;
+
 	float rotationY = 0F;
 
 	void Update ()
 	{
+		if (PauseMenu.activeSelf == false) {
 		if (axes == RotationAxes.MouseXAndY)
 		{
 			float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
@@ -52,6 +55,7 @@ public class MouseLook : MonoBehaviour {
 			
 			transform.localEulerAngles = new Vector3(-rotationY, transform.localEulerAngles.y, 0);
 		}
+	}
 	}
 	
 	void Start ()

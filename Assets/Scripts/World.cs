@@ -8,8 +8,7 @@ public class World : MonoBehaviour {
 	public float viewRange = 65;
 	public Chunk chunkFab;
 
-	void Awake() {
-		Cursor.visible = false;
+	void Start() {
 		currentWorld = this;
 		if(seed == 0)
 			seed = Random.Range(0, int.MaxValue);

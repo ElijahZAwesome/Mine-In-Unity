@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SimplexNoise;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshCollider))]
@@ -27,6 +28,16 @@ public class Chunk : MonoBehaviour {
 
 	void Start() {
 		chunks.Add(this);
+		//meshRenderer = GetComponent<MeshRenderer> ();
+		meshCollider = GetComponent<MeshCollider>();
+		meshFilter = GetComponent<MeshFilter>();
+		CalculateMapFromScratch();
+		StartCoroutine(CreateVisualMesh());
+	}
+
+	public void StartFunctions() {
+		chunks.Add(this);
+		Debug.Log (chunks);
 		//meshRenderer = GetComponent<MeshRenderer> ();
 		meshCollider = GetComponent<MeshCollider>();
 		meshFilter = GetComponent<MeshFilter>();

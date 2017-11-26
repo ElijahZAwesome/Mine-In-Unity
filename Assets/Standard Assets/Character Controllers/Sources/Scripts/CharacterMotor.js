@@ -330,10 +330,22 @@ function FixedUpdate () {
 	if (useFixedUpdate)
 		UpdateFunction();
 }
-
+var walkKey: KeyCode = KeyCode.D;
+ var lastTime: float = -1.0f;
 function Update () {
-	if (!useFixedUpdate)
-		UpdateFunction();
+ if (Input.GetKeyDown(KeyCode.W))
+ {
+     if (Time.time - lastTime < 0.5f)
+     {
+         lastTime = Time.time;
+         Debug.Log("run");
+         maxForwardSpeed = 9.0;
+     } else
+     {
+         lastTime = Time.time;
+         maxForwardSpeed = 6.0;
+     }
+}
 }
 
 private function ApplyInputVelocityChange (velocity : Vector3) {	
